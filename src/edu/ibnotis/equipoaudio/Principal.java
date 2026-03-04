@@ -10,10 +10,10 @@ public class Principal {
         Altavoz altavoz2 = new Altavoz("JBL", "ruben", 100.00, 50.00, 200.00, false);
         Altavoz altavoz3 = new Altavoz("JBL", "iker", 100.00, 50.00, 200.00, true);
 
-        altavoz0.sonar();
+        //altavoz0.sonar();
 
-        Subwoofer subwoofer = new Subwoofer(15, 112, 65, 40.00,true);
-        subwoofer.sonar();
+        Subwoofer subwoofer = new Subwoofer(15, 112, 65, 40.00,false);
+        //subwoofer.sonar();
 
         EquipoAudio equipoAudio = new EquipoAudio();
         equipoAudio.setNombreComercial("EquipoNico");
@@ -21,12 +21,17 @@ public class Principal {
         ArrayList<Altavoz> listaDeEquipoAudio= equipoAudio.getListaAltavoces();
         listaDeEquipoAudio.add(altavoz);
          */
-        equipoAudio.anhadirAltavoz(altavoz0);
+       /* equipoAudio.anhadirAltavoz(altavoz0);
         equipoAudio.anhadirAltavoz(altavoz1);
         equipoAudio.anhadirAltavoz(altavoz2);
         equipoAudio.anhadirAltavoz(altavoz3);
+*/
         equipoAudio.setSub(subwoofer);
-        equipoAudio.conectarSistema();
-        System.out.println(equipoAudio);
+        //equipoAudio.conectarSistema();
+        //System.out.println(equipoAudio);
+
+        equipoAudio.reproducirTest();
+        System.out.println(equipoAudio.calcularPrecioTotal());
+
     }
 }

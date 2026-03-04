@@ -61,6 +61,30 @@ public class EquipoAudio {
                 a.setEstaEncendido(true);
             }
         }
+        this.getSub().setEstaEncendido(true);
+    }
+
+    public void reproducirTest(){
+        for(Altavoz a : this.listaAltavoces){
+            a.sonar();
+        }
+        if(this.sub!=null){
+            this.sub.sonar();
+        }
+        else {
+            System.out.println("este equipo no cuenta con subwoofer");
+        }
+    }
+
+    public double calcularPrecioTotal(){
+        double sumaPrecio = 0.0;
+        for(Altavoz a : this.listaAltavoces){
+            sumaPrecio+=a.getPrecio();
+        }
+        if(this.sub!=null){
+            return sumaPrecio+=this.sub.getPrecio();
+        }
+        return sumaPrecio;
     }
 
         /*    • Atributos: nombreComercial (String), listaAltavoces (un ArrayList de objetos Altavoz) y sub

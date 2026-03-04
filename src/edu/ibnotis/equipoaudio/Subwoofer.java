@@ -70,14 +70,17 @@ public class Subwoofer {
     }
 
     public void sonar(){
-        if(potencia<50){
-            System.out.println("boom boom");
+        if (estaEncendido) {
+            if (potencia < 50) {
+                System.out.println("boom boom");
+            } else if (potencia <= 100) {
+                System.out.println("BOOM BOOM");
+            } else {
+                System.out.println("!!!!BOOOOOM BOOOOOM¡¡¡¡");
+            }
         }
-        else if(potencia<=100){
-            System.out.println("BOOM BOOM");
-        }
-        else{
-            System.out.println("!!!!BOOOOOM BOOOOOM¡¡¡¡");
+        else {
+            System.out.println(".....");
         }
     }
 
