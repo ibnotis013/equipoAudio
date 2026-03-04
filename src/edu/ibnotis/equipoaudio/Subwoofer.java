@@ -6,14 +6,24 @@ public class Subwoofer {
     private int potencia;
     private int frecuenciaCorte;
     private double precio;
+    private boolean estaEncendido;
 
     public Subwoofer() {}
 
-    public Subwoofer(int pulgadas, int potencia, int frecuenciaCorte, double precio) {
+    public Subwoofer(int pulgadas, int potencia, int frecuenciaCorte, double precio, boolean estaEncendido) {
         this.pulgadas = pulgadas;
         this.potencia = potencia;
         this.frecuenciaCorte = frecuenciaCorte;
         this.precio = precio;
+        this.estaEncendido = estaEncendido;
+    }
+
+    public boolean isEstaEncendido() {
+        return estaEncendido;
+    }
+
+    public void setEstaEncendido(boolean estaEncendido) {
+        this.estaEncendido = estaEncendido;
     }
 
     public int getPulgadas() {
@@ -55,6 +65,7 @@ public class Subwoofer {
                 ", potencia=" + potencia +
                 ", frecuenciaCorte=" + frecuenciaCorte +
                 ", precio=" + precio +
+                ", estaEncendido=" + estaEncendido +
                 '}';
     }
 

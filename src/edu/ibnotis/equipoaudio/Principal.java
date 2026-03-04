@@ -12,7 +12,7 @@ public class Principal {
 
         altavoz0.sonar();
 
-        Subwoofer subwoofer = new Subwoofer(15, 112, 65, 40.00);
+        Subwoofer subwoofer = new Subwoofer(15, 112, 65, 40.00,true);
         subwoofer.sonar();
 
         EquipoAudio equipoAudio = new EquipoAudio();
