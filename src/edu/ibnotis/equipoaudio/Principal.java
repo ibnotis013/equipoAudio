@@ -3,7 +3,11 @@ package edu.ibnotis.equipoaudio;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class Principal {
+    private static final int SISTEMA_AUDIO_20=2;
+    private static final int SISTEMA_AUDIO_51=5;
     static Scanner sc = new Scanner(System.in);
+
+
     static void main() {
 
         Altavoz altavoz0 = new Altavoz("JBL", "pro", 100.00, 50.00, 200.00, false);
@@ -61,19 +65,18 @@ public class Principal {
             opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
-                    Altavoz altavoz0 = new Altavoz("JBL", "pro", 100.00, 50.00, 200.00, false);
-                    Altavoz altavoz1 = new Altavoz("JBL", "noob", 100.00, 50.00, 200.00, true);
-                    EquipoAudio equipoAudio = new EquipoAudio();
-                    equipoAudio.setNombreComercial("EquipoAudioLedo");
-                    equipoAudio.getListaAltavoces().add(altavoz0);
-                    equipoAudio.getListaAltavoces().add(altavoz1);
+                    EquipoAudio equipoAudio20=configurarAltavoces(SISTEMA_AUDIO_20);
                     flag = false;
-                    System.out.println(equipoAudio);
+
                     break;
                 case 2:
+                    EquipoAudio equipoAudio21 =configurarAltavoces(SISTEMA_AUDIO_20);
+                    equipoAudio21.setSub(configurarSubwoofer());
                     flag = false;
                     break;
                 case 3:
+                    EquipoAudio equipoAudio51 =configurarAltavoces(SISTEMA_AUDIO_51);
+                    equipoAudio51.setSub(configurarSubwoofer());
                     flag = false;
                     break;
                 default:
@@ -83,4 +86,50 @@ public class Principal {
         } while (flag);
 
     }
+
+    public static EquipoAudio configurarAltavoces(int numAltavoz) {
+        System.out.println("ponle nombre a tu equipo de audio");
+        sc.nextLine();
+        String nombreEquipoAudio = sc.nextLine();
+        EquipoAudio equipoAudio = new EquipoAudio();
+        equipoAudio.setNombreComercial(nombreEquipoAudio);
+        System.out.println("crea tu altavoz");
+        for (int i = 0; i <numAltavoz; i++) {
+            equipoAudio.getListaAltavoces().add(new Altavoz());
+            Altavoz altavoz = equipoAudio.getListaAltavoces().get(i);
+            sc.nextLine();
+            System.out.println("inserta la marca");
+            altavoz.setMarca(sc.nextLine());
+            System.out.println("inserta el modelo");
+            altavoz.setModelo(sc.nextLine());
+            System.out.println("inserta el precio");
+            altavoz.setPrecio(sc.nextDouble());
+            System.out.println("inserta la frecuencia minima");
+            altavoz.setFrecuenciaMinima(sc.nextDouble());
+            System.out.println("inserta la frecuencia maxima");
+            altavoz.setFrecuenciaMaxima(sc.nextDouble());
+            System.out.println("esta encendido(true/false)");
+            altavoz.setEstaEncendido(sc.nextBoolean());
+        }
+        return equipoAudio;
+    }
+
+    public static Subwoofer configurarSubwoofer() {
+        Subwoofer subwoofer = new Subwoofer();
+        System.out.println("crea tu subwoofer");
+        System.out.println("pulgadas del subwoofer");
+        subwoofer.setPulgadas(sc.nextInt());
+        System.out.println("dime la potencia");
+        subwoofer.setPotencia(sc.nextInt());
+        System.out.println("dime la frecuencia");
+        subwoofer.setPotencia(sc.nextInt());
+        System.out.println("dime el precio");
+        subwoofer.setPrecio(sc.nextDouble());
+        System.out.println("esta encendidio (true /false)");
+        subwoofer.setEstaEncendido(sc.nextBoolean());
+        return  subwoofer;
+    }
+
+
+
 }
