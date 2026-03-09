@@ -61,7 +61,12 @@ public class EquipoAudio {
                 a.setEstaEncendido(true);
             }
         }
-        this.getSub().setEstaEncendido(true);
+        if(this.sub!=null){
+            this.getSub().setEstaEncendido(true);
+        }
+        else{
+            System.out.println("no tienes subwoofer");
+        }
     }
 
     public void reproducirTest(){
@@ -78,10 +83,14 @@ public class EquipoAudio {
 
     public double calcularPrecioTotal(){
         double sumaPrecio = 0.0;
+        int numAltavoces=0;
         for(Altavoz a : this.listaAltavoces){
+            numAltavoces++;
+            System.out.println("el altavoz numero "+numAltavoces+", tiene el precio: "+a.getPrecio());
             sumaPrecio+=a.getPrecio();
         }
         if(this.sub!=null){
+            System.out.println(sub.getPrecio());
             return sumaPrecio+=this.sub.getPrecio();
         }
         return sumaPrecio;

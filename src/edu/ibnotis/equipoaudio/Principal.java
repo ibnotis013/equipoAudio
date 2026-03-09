@@ -2,20 +2,22 @@ package edu.ibnotis.equipoaudio;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-public class Principal {
-    private static final int SISTEMA_AUDIO_20=2;
-    private static final int SISTEMA_AUDIO_51=5;
-    static Scanner sc = new Scanner(System.in);
 
+public class Principal {
+    private static final int SISTEMA_AUDIO_20 = 2;
+    private static final int SISTEMA_AUDIO_51 = 5;
+    static Scanner sc = new Scanner(System.in);
+    private static EquipoAudio equipoAudio;
+    private static ArrayList<EquipoAudio> equipoAudioList;
 
     static void main() {
 
-        Altavoz altavoz0 = new Altavoz("JBL", "pro", 100.00, 50.00, 200.00, false);
+       /* Altavoz altavoz0 = new Altavoz("JBL", "pro", 100.00, 50.00, 200.00, false);
         Altavoz altavoz1 = new Altavoz("JBL", "noob", 100.00, 50.00, 200.00, true);
         Altavoz altavoz2 = new Altavoz("JBL", "ruben", 100.00, 50.00, 200.00, false);
         Altavoz altavoz3 = new Altavoz("JBL", "iker", 100.00, 50.00, 200.00, true);
         Subwoofer subwoofer = new Subwoofer(15, 112, 65, 40.00, false);
-
+*/
 
         dibujarMenu();
         System.out.println("elija una opcion");
@@ -35,17 +37,15 @@ public class Principal {
 
                 case 1:
                     configurarEquipo();
-                    flag = false;
                     break;
                 case 2:
-                    flag = false;
+                    encenderYProbar();
                     break;
                 case 3:
-                    flag = false;
+                    System.out.println(equipoAudio.calcularPrecioTotal());
                     break;
                 default:
                     System.out.println("debes de escoger una opcion entre 1, 2 ,3");
-                    flag = true;
                     break;
 
             }
@@ -54,7 +54,7 @@ public class Principal {
 
     public static void configurarEquipo() {
 
-        boolean flag;
+        boolean flag = true;
         int opcion;
         do {
 
@@ -65,18 +65,18 @@ public class Principal {
             opcion = sc.nextInt();
             switch (opcion) {
                 case 1:
-                    EquipoAudio equipoAudio20=configurarAltavoces(SISTEMA_AUDIO_20);
+                    equipoAudio = configurarAltavoces(SISTEMA_AUDIO_20);
                     flag = false;
 
                     break;
                 case 2:
-                    EquipoAudio equipoAudio21 =configurarAltavoces(SISTEMA_AUDIO_20);
-                    equipoAudio21.setSub(configurarSubwoofer());
+                    equipoAudio = configurarAltavoces(SISTEMA_AUDIO_20);
+                    equipoAudio.setSub(configurarSubwoofer());
                     flag = false;
                     break;
                 case 3:
-                    EquipoAudio equipoAudio51 =configurarAltavoces(SISTEMA_AUDIO_51);
-                    equipoAudio51.setSub(configurarSubwoofer());
+                    equipoAudio = configurarAltavoces(SISTEMA_AUDIO_51);
+                    equipoAudio.setSub(configurarSubwoofer());
                     flag = false;
                     break;
                 default:
@@ -94,7 +94,7 @@ public class Principal {
         EquipoAudio equipoAudio = new EquipoAudio();
         equipoAudio.setNombreComercial(nombreEquipoAudio);
         System.out.println("crea tu altavoz");
-        for (int i = 0; i <numAltavoz; i++) {
+        for (int i = 0; i < numAltavoz; i++) {
             equipoAudio.getListaAltavoces().add(new Altavoz());
             Altavoz altavoz = equipoAudio.getListaAltavoces().get(i);
             sc.nextLine();
@@ -127,9 +127,13 @@ public class Principal {
         subwoofer.setPrecio(sc.nextDouble());
         System.out.println("esta encendidio (true /false)");
         subwoofer.setEstaEncendido(sc.nextBoolean());
-        return  subwoofer;
+        return subwoofer;
     }
 
 
+    public static void encenderYProbar() {
+        equipoAudio.conectarSistema();
+        equipoAudio.reproducirTest();
+    }
 
 }

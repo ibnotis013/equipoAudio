@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b0b76071-02f6-4aa5-ad1d-61caf07cb2d7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/edu/ibnotis/equipoaudio/EquipoAudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/ibnotis/equipoaudio/EquipoAudio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/edu/ibnotis/equipoaudio/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/edu/ibnotis/equipoaudio/Principal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +72,9 @@
       <workItem from="1772610574087" duration="5402000" />
       <workItem from="1772623650225" duration="2522000" />
       <workItem from="1772699388385" duration="2696000" />
-      <workItem from="1772706926026" duration="5020000" />
+      <workItem from="1772706926026" duration="5191000" />
+      <workItem from="1773045295349" duration="383000" />
+      <workItem from="1773052409425" duration="2509000" />
     </task>
     <servers />
   </component>
